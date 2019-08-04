@@ -6,15 +6,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class JokeDto {
 
-        String type;
-        @NotNull
-        JokeValue value;
+    private String type;
+    @NotNull
+    private JokeValue value;
 
 
 }

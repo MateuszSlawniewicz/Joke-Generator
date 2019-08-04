@@ -12,4 +12,6 @@ public class JokeSenderApplication {
         SpringApplication.run(JokeSenderApplication.class, args);
     }
 
+
+
 }

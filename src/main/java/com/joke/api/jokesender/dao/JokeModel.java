@@ -12,8 +12,8 @@ import java.util.List;
 @Document(collection = "jokes")
 public class JokeModel {
 
-    Integer externalId;
-    String value;
-    List<String> categories = new ArrayList<>();
+    private Integer externalId;
+    private String value;
+    private List<String> categories = new ArrayList<>();
 
 }

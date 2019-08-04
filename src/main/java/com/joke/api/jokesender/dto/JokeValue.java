@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JokeValue {
-    Integer id;
-    String joke;
-    String[] categories;
+   private Integer id;
+   private String joke;
+   private String[] categories;
 }
