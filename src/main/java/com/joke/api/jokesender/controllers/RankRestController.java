@@ -1,6 +1,7 @@
 package com.joke.api.jokesender.controllers;
 
 import com.google.gson.Gson;
+import com.joke.api.jokesender.dto.JokeDto;
 import com.joke.api.jokesender.dto.RankDto;
 import com.joke.api.jokesender.services.JokeService;
 import com.joke.api.jokesender.services.RankService;
@@ -8,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Slf4j
@@ -34,19 +36,9 @@ public class RankRestController {
         return jokeService.getJokeById(id).getValue().getJoke();
     }
 
-
-    @GetMapping("/test")
-    public String test() {
-
-        RankDto rankDto = new RankDto();
-        rankDto.setValue(2);
-        rankDto.setJokeId(201);
-        Gson gson = new Gson();
-        String json = gson.toJson(rankDto);
-        rankService.save(rankDto);
-        return json;
-
-
+    @GetMapping("/jokeofaday")
+    public JokeDto findBestJoke() {
+        return jokeService.getJokeOfADay(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
 
     }
 

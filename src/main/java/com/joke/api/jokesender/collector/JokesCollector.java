@@ -21,12 +21,12 @@ public class JokesCollector {
         this.jokeService = jokeService;
     }
 
-    @Scheduled(cron = "* * * * * *")
-    public void saveJokeFromChuckApi() {
-        ResponseEntity<JokeDto> dtos = restTemplate.getForEntity("http://api.icndb.com/jokes/random", JokeDto.class);
-        JokeDto savedJoke = jokeService.save(dtos.getBody());
-        log.info("Joke {} has been saved",savedJoke.toString());
-
-    }
+//    @Scheduled(cron = "* * * * * *")
+//    public void saveJokeFromChuckApi() {
+//        ResponseEntity<JokeDto> dtos = restTemplate.getForEntity("http://api.icndb.com/jokes/random", JokeDto.class);
+//        JokeDto savedJoke = jokeService.save(dtos.getBody());
+//        log.info("Joke {} has been saved",savedJoke.toString());
+//
+//    }
 
 }
