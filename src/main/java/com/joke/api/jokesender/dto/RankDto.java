@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RankDto {
 
-    private String id;
     private Integer value;
     private Integer jokeId;
 
