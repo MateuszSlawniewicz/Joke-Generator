@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RankDto {
-
     private Integer value;
     private Integer jokeId;
 

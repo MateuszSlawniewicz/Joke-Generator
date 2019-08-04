@@ -13,11 +13,11 @@ public interface JokeMapper {
             @Mapping(source = "value.joke", target = "value"),
             @Mapping(source = "value.categories", target = "categories")
     })
-    JokeModel jokeDtoToJokeEntity(JokeDto joke);
+    JokeModel jokeDtoToJokeModel(JokeDto jokeDto);
     @Mappings({
             @Mapping(source = "externalId", target = "value.id"),
             @Mapping(source = "value", target = "value.joke"),
             @Mapping(source = "categories", target = "value.categories")
     })
-    JokeDto jokeEntityToJokeDto(JokeModel entity);
+    JokeDto jokeModelToJokeDto(JokeModel jokeModel);
 }

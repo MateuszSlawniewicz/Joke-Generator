@@ -1,7 +1,7 @@
 package com.joke.api.jokesender.services;
 
 import com.joke.api.jokesender.dto.RankDto;
-import com.joke.api.jokesender.repositories.JokeRepository;
+import com.joke.api.jokesender.mappers.RankMapper;
 import com.joke.api.jokesender.repositories.RankRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,15 +9,13 @@ import org.springframework.stereotype.Service;
 public class RankService {
 
     private final RankRepository rankRepository;
-    private final JokeRepository jokeRepository;
 
-    public RankService(RankRepository rankRepository, JokeRepository jokeRepository) {
+    public RankService(RankRepository rankRepository) {
         this.rankRepository = rankRepository;
-        this.jokeRepository = jokeRepository;
     }
 
 
     public RankDto save(RankDto rankDto) {
-        return null;
+        return RankMapper.INSTANCE.rankModelToRankDto(rankRepository.save(RankMapper.INSTANCE.rankDtoToRankModel(rankDto)));
     }
 }
