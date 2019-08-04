@@ -8,5 +8,5 @@ import lombok.Data;
 public class RankModel {
     private String id;
     private Integer value;
-    private JokeModel jokeModel;
+    private Integer jokeId;
 }
