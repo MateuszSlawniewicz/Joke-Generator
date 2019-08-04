@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RankRepository extends MongoRepository<RankModel, String> {
     List<RankModel> findByDate(String date);
+    List<RankModel> findByJokeId(Integer id);
 }

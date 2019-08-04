@@ -8,6 +8,7 @@ import com.joke.api.jokesender.repositories.JokeRepository;
 import com.joke.api.jokesender.repositories.RankRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -33,12 +34,10 @@ public class JokeService {
 
 
     public JokeDto getJokeById(Integer id) {
-        Optional<JokeModel> jokeOptional = jokeRepository.findByExternalId(id).stream()
-                .findFirst();
-        if (jokeOptional.isPresent()) {
-            return INSTANCE.jokeModelToJokeDto(jokeOptional.get());
-        }
-        throw new NoJokeException();
+        return jokeRepository.findByExternalId(id).stream()
+                .findFirst()
+                .map(INSTANCE::jokeModelToJokeDto)
+                .orElseThrow(NoJokeException::new);
     }
 
 
@@ -46,14 +45,12 @@ public class JokeService {
         Map<Integer, Double> mapOfJokesId = rankRepository.findByDate(date).stream()
                 .collect(groupingBy(RankModel::getJokeId, averagingInt(RankModel::getValue)));
         Double max = max(mapOfJokesId.values());
-
-        Optional<Integer> optionalJokeId = mapOfJokesId.keySet().stream()
+        return mapOfJokesId.keySet().stream()
                 .filter(integer -> mapOfJokesId.get(integer).equals(max))
-                .findFirst();
-        if (optionalJokeId.isPresent()) {
-            return getJokeById(optionalJokeId.get());
-        }
-        throw new NoJokeException();
+                .findFirst()
+                .map(this::getJokeById)
+                .orElseThrow(NoJokeException::new);
+
     }
 
 }

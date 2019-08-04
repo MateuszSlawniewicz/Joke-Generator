@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 public class RankService {
@@ -25,4 +28,11 @@ public class RankService {
     }
 
 
+    public List<RankDto> getRanksByJokeId(Integer jokeId) {
+        return rankRepository.findByJokeId(jokeId).stream()
+                .map(RankMapper.INSTANCE::rankModelToRankDto)
+                .collect(Collectors.toList());
+
+
+    }
 }
