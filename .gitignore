@@ -31,3 +31,7 @@ build/
 ### VS Code ###
 .vscode/
 /.idea/
+/src/main/resources/application.properties
+src/main/java/com/joke/api/jokesender/handlers/
+src/main/resources/static/
+src/main/resources/templates/
