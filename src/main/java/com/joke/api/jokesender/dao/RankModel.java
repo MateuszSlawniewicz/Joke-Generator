@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class RankModel {
-    private String id;
+    private Integer id;
     private Integer value;
-    private JokeModel jokeModel;
+    private Integer jokeId;
 }
